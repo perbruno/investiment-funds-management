@@ -1,0 +1,47 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.5.0
+      hooks:
+          - id: trailing-whitespace
+          - id: end-of-file-fixer
+          - id: check-yaml
+          - id: check-json
+          - id: check-toml
+          - id: check-added-large-files
+          - id: check-case-conflict
+          - id: check-merge-conflict
+          - id: debug-statements
+            exclude: "^tests/"
+    - repo: local
+      hooks:
+          - id: black
+            name: "Black Formatter"
+            entry: black
+            language: system
+            types: [file, python]
+
+          - id: isort
+            name: "Sort Imports"
+            entry: isort
+            language: system
+            types: [file, python]
+
+          - id: flake8
+            name: "Flake8 linter check"
+            entry: flake8
+            # args: [
+            #     "--extend-select",
+            #     "B950"
+            # ]
+            language: system
+            types: [file, python]
+            exclude: "__pycache__|.pytest_cache|^tests/"
+
+          - id: bandit
+            args: ["-ll"]
+            name: "Bandit security check"
+            entry: bandit
+            language: system
+            types: [file, python]

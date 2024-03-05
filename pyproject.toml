@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "investment-fund"
+version = "0.1.0"
+description = ""
+authors = ["perbruno <brunuu.pereira@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^5.0.3"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.6.2"
+isort = "^5.13.2"
+bandit = "^1.7.7"
+flake8 = "^7.0.0"
+flake8-bugbear = "^24.2.6"
+mkdocs = "^1.5.3"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-lenght = 102
+
+[tool.flake8]
+max-line-length = 102
+count = true
+select = "B950"
+ignore = "E203,E501,E701"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
